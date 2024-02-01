@@ -18,9 +18,9 @@ public class Mascota implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "tipoAnimal")
-    private String tipoAnimal;
+    private String tipo_animal;
     @Column(name = "raza")
     private String raza;
-    @Column(name = "fechaNacimiento")
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
 }
