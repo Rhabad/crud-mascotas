@@ -1,13 +1,16 @@
 package com.mascotas.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.sql.Date;
-
+@Data @NoArgsConstructor @AllArgsConstructor
+@Builder
 @Entity
-@Data
 @Table(name = "mascotas")
 public class Mascota implements Serializable {
 

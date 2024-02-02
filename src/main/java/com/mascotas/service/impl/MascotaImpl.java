@@ -1,6 +1,7 @@
 package com.mascotas.service.impl;
 
 import com.mascotas.model.dao.MascotaDao;
+import com.mascotas.model.dto.MascotaDto;
 import com.mascotas.model.entity.Mascota;
 import com.mascotas.service.IMascota;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,15 @@ public class MascotaImpl implements IMascota {
 
     @Override
     @Transactional
-    public Mascota save(Mascota mascota) {
+    public Mascota save(MascotaDto mascotaDto) {
+        Mascota mascota = Mascota.builder()
+                .id(mascotaDto.getId())
+                .nombre(mascotaDto.getNombre())
+                .tipo_animal(mascotaDto.getTipo_animal())
+                .raza(mascotaDto.getRaza())
+                .fechaNacimiento(mascotaDto.getFechaNacimiento())
+                .build();
+
         return mascotaDao.save(mascota);
     }
 
