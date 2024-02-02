@@ -3,16 +3,23 @@ package com.mascotas.service.impl;
 import com.mascotas.model.dao.MascotaDao;
 import com.mascotas.model.dto.MascotaDto;
 import com.mascotas.model.entity.Mascota;
-import com.mascotas.service.IMascota;
+import com.mascotas.service.IMascotaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
-public class MascotaImpl implements IMascota {
+public class MascotaImplService implements IMascotaService {
 
     @Autowired
     private MascotaDao mascotaDao;
+
+    @Override
+    public List<Mascota> listAll() {
+        return (List<Mascota>) mascotaDao.findAll();
+    }
 
     @Override
     @Transactional
@@ -38,5 +45,10 @@ public class MascotaImpl implements IMascota {
     @Transactional
     public void delete(Mascota mascota) {
         mascotaDao.delete(mascota);
+    }
+
+    @Override
+    public boolean existsById(Integer id) {
+        return mascotaDao.existsById(id);
     }
 }
